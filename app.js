@@ -30,11 +30,11 @@ intilizeDbAndServer()
 
 function authinticationToken(request, response, next) {
   let jwtToken
-  const authHeader = ['authorization']
+  const authHeader = request.headers['authorization']
   if (authHeader !== undefined) {
     jwtToken = authHeader.split(' ')[1]
   }
-  if (authHeader === undefined) {
+  if (authHeader === jwtToken) {
     response.status(401)
     response.send('Invalid JWT Token')
   } else {
