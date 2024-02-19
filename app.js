@@ -70,7 +70,7 @@ app.post('/login/', async (request, response) => {
     const isPasswordMatched = await bcrypt.compare(password, dBUser.password)
     if (isPasswordMatched === true) {
       const payload = {username: username}
-      const jwtToken = jwt.sign(payload, 'qwerty')
+      const jwtToken = jwt.sign(payload, "MY_SECRET_TOKEN")
       response.send({jwtToken})
     } else {
       response.status(400)
